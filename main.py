@@ -12,9 +12,9 @@ pdf = FPDF(orientation='P', unit='mm', format='A4')
 pdf.set_auto_page_break(auto=False, margin=0)
 
 # Iterate over each row in dataframe.
-# Create x amount of pages, let x = row['Pages']
+# Create x = row['Pages'] amount of pages.
 # x is an integer. row is in df.iterrows()
-for index, row in df.iterrowss():
+for index, row in df.iterrows():
     pdf.add_page()
 
     # Set the header
