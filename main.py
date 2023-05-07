@@ -20,13 +20,13 @@ for index, row in df.iterrows():
     # Set the header
     pdf.set_font(family='Times', style='B', size=24)
     pdf.set_text_color(100, 100, 100)
-    pdf.cell(w=0, h=12, txt=row['Topic'], align='L', ln=1, border=1)
+    pdf.cell(w=0, h=12, txt=row['Topic'], align='L', ln=1, border=0)
     pdf.line(10, 21, 200, 21)
 
     # Set the page footer.
     pdf.ln(265)
     pdf.set_font(family='Times', style='I', size=10)
-    pdf.set_text_color(180, 180, 180)
+    pdf.set_text_color(0, 0, 0)
     pdf.cell(w=0, h=10, txt=row['Topic'], align='R')
 
     # Add more pages for each topic.
@@ -36,7 +36,7 @@ for index, row in df.iterrows():
         # Set the page footer for additional pages.
         pdf.ln(277)
         pdf.set_font(family='Times', style='I', size=10)
-        pdf.set_text_color(180, 180, 180)
+        pdf.set_text_color(0, 0, 0)
         pdf.cell(w=0, h=10, txt=row['Topic'], align='R')
 
 # Output PDF file.
