@@ -2,6 +2,25 @@
 from fpdf import FPDF
 import pandas as pd
 
+
+# Recursive function to print lines on each page.
+def print_lines(dy, y):
+    """
+
+    :param dy: Vertical Distance between each line.
+    :param y: Y value of header line.
+
+    Print the first line dy distance away from the header line.
+    Recursively call the function with dy the same and y being,
+    the y distance of the last line.
+    """
+    if dy >= 265:
+        return None
+    else:
+        pdf.line(10, y + dy, 200, y + dy)
+        return print_lines(dy + 2, y + 10)
+
+
 # Create pandas dataframe.
 df = pd.read_csv('topics2.csv')
 
@@ -23,6 +42,9 @@ for index, row in df.iterrows():
     pdf.cell(w=0, h=12, txt=row['Topic'], align='L', ln=1, border=0)
     pdf.line(10, 21, 200, 21)
 
+    # Recursion to print lines on page.
+    print_lines(15, 21)
+
     # Set the page footer.
     pdf.ln(265)
     pdf.set_font(family='Times', style='I', size=10)
@@ -32,6 +54,9 @@ for index, row in df.iterrows():
     # Add more pages for each topic.
     for i in range(row['Pages'] - 1):
         pdf.add_page()
+
+        # Recursion to print lines on page.
+        print_lines(15, 10)
 
         # Set the page footer for additional pages.
         pdf.ln(277)
